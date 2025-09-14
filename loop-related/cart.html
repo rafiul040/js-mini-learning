@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+<input type="text" placeholder="Product" id="product">
+<input type="text" placeholder="Quantity" id="quantity">
+
+
+
+
+
+
+
+<button onclick="handleProduct()">Add Product</button>
+
+
+<div>
+    <h3>Added Products</h3>
+    <ul id="products-container">
+
+    </ul>
+</div>
+
+
+
+    <script>
+
+
+
+
+
+const handleProduct = () => {
+    const productEl = document.getElementById('product')
+    const quantityEl = document.getElementById('quantity')
+    const product = productEl.value;
+    const quantity = parseInt(quantityEl.value);
+    // console.log('Product Add', product, quantity)
+
+
+
+    productEl.value = '';
+    quantityEl.value = '';
+    displayProduct(product, quantity)
+    addProductToCart(product, quantity)
+
+}
+
+const getCart = () => {
+    let cart = {}
+
+    if(cart[product]){
+
+    }
+    else{
+
+    }
+
+
+    const cartJSON = localStorage.getItem('cart');
+    if(cartJSON){
+        cart = JSON.parse(cartJSON);
+    }
+
+
+    return cart;
+}
+
+const addProductToCart = (product, quantity) => {
+    const cart = getCart();
+
+    if(cart[product]){
+        cart[product] = cart[product] + quantity
+    }
+    else{
+        cart[product] = quantity
+        
+    }
+
+
+
+
+
+    console.log("cart", cart)
+
+    const cartJSON = JSON.stringify(cart)
+    localStorage.setItem('cart', cartJSON)
+
+
+
+}
+
+
+
+
+
+
+
+const displayProduct = (product, quantity) => {
+    const li = document.createElement('li')
+    li.innerText = `${product} : ${quantity}`
+    const ul = document.getElementById('products-container')
+    ul.append(li)
+
+
+}
+
+const displayStoreProducts = () => {
+    const cart = getCart();
+    for(const product in cart){
+        const quantity = cart[product]
+        console.log(product, quantity)
+        displayProduct(product, quantity)
+    }
+}
+
+displayStoreProducts()
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
