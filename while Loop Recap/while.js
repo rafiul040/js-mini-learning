@@ -37,8 +37,20 @@ let text = 1
 // Multiply numbers from 1 to 5 (factorial of 5)
 
 
-while(i <= 5){
-    text = '5' + " * " + i + " = " + i * 5
-    i++;
+// while(i <= 5){
+//     text = '5' + " * " + i + " = " + i * 5
+//     i++;
+//     console.log(text)
+// }
+
+
+
+
+
+// Print the multiplication table of 3 (3 × 1 = 3 … 3 × 10 = 30)
+
+while(i <= 10){
+    text = 3 + " x " + i + " = " + i * 3
+    i++
     console.log(text)
 }
